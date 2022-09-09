@@ -28,7 +28,7 @@ class BookRepoTest {
     @Test
     @Order(1)
     public void saveEmployeeTest() {
-        Book book = new Book("1L","Zero To One", "Present");
+        Book book = new Book("1L","Mein Kampf", "Present");
         assertEquals(book, bookRepo.save(book));
     }
 

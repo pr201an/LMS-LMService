@@ -57,9 +57,9 @@ public class BookController {
         return new ResponseEntity<>("Returning from MongoDB, Book Returned!", HttpStatus.OK);
     }
 
-    @PostMapping("/book")
-    public ResponseEntity<Book> newBook(@Valid @RequestBody Book book) {
-        return new ResponseEntity<>(bookService.addBook(book), HttpStatus.CREATED);
+    @PostMapping("/book/{bookName}")
+    public ResponseEntity<Book> newBook(@PathVariable("bookName") String bookName) {
+        return new ResponseEntity<>(bookService.addBook(bookName), HttpStatus.CREATED);
     }
 
     @PutMapping("/book/{bookName}")

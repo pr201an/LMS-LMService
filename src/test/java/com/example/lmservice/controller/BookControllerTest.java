@@ -25,6 +25,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -65,10 +66,10 @@ class BookControllerTest {
     public void shouldCreateBook() throws Exception {
         //ARRANGE - given some preconditions
         Book book = new Book("1L", "Zero To One", "Present");
-        Mockito.when(bookService.addBook(Mockito.any(Book.class))).thenReturn(book);
+        Mockito.when(bookService.addBook(anyString())).thenReturn(book);
 
         //ACT - when an action occurs
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/book")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/book/Zero To One")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(book)))
                 .andExpect(MockMvcResultMatchers.status().isCreated())

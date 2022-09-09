@@ -83,9 +83,9 @@ class BookServiceTest {
 
     @Test
     public void addBook() {
-        given(bookRepo.save(book)).willReturn(book);
+        given(bookRepo.save(any())).willReturn(book);
 
-        Book book1 = bookService.addBook(book);
+        Book book1 = bookService.addBook(book.getBookName());
         assertThat(book1.getBookName()).isEqualTo("Zero To One");
         assertThat(book1).isNotNull();
     }

@@ -45,10 +45,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addBook(Book book) {
-        if(book.bookStatus == null){
-            book.setBookStatus("Present");
-        }
+    public Book addBook(String bookName) {
+        Book book = new Book();
+        book.setBookStatus("Present");
+        book.setBookName(bookName);
         return bookRepo.save(book);
     }
 
