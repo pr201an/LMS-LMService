@@ -35,7 +35,7 @@ public class BookController {
         return bookService.getBookByName(bookName);
     }
 
-    @PutMapping ("/book/borrow/{bookName}")
+    @PutMapping("/book/borrow/{bookName}")
     public ResponseEntity<?> borrowBook(@PathVariable("bookName") String bookName) {
         Book book = bookService.getBookByName(bookName);
         if(Objects.equals(book.getBookStatus(), "Absent")) {
